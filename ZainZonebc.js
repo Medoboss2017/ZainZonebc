@@ -46,41 +46,50 @@ client.on('message',async message => {
       });
     }
   });
- 
-var adminprefix = '!!'
-const developers = ["397090819200516096","340209088770211840"]
 
 
+client.on('ready',  () => {
+  console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'); 
+  console.log('by BadGuY');
+  console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
+  console.log(`Logged in as  * [ " ${client.user.username} " ] servers! [ " ${client.guilds.size} " ]`);
+  console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
+  console.log('is online')
+client.user.setStatus("dnd");
+});
 
-bot.on('message', message => {
+
+const devs = ["397090819200516096"];
+const adminprefix = ["!!"];
+client.on('message', message => {
     var argresult = message.content.split(` `).slice(1).join(' ');
-      if (!developers.includes(message.author.id)) return;
+      if (!devs.includes(message.author.id)) return;
       
-  if (message.content.startsWith(adminprefix + 'setgame')) {
-    bot.user.setGame(argresult);
-      message.channel.send(`**Game Set : ${argresult}**`)
+  if (message.content.startsWith('(prefix))ply')) {
+    client.user.setGame(argresult);
+      message.channel.send(`**✅   ${argresult}**`)
   } else 
-     if (message.content === (adminprefix + "leave")) {
+     if (message.content === ("leave")) {
     message.guild.leave();        
   } else  
-  if (message.content.startsWith(adminprefix + 'setwatch')) {
-  bot.user.setActivity(argresult, {type:'WATCHING'});
-      message.channel.send(`**Watching : ${argresult}**`)
+  if (message.content.startsWith('(prefix)wt')) {
+  client.user.setActivity(argresult, {type:'WATCHING'});
+      message.channel.send(`**✅   ${argresult}**`)
   } else 
-  if (message.content.startsWith(adminprefix + 'setlisten')) {
-  bot.user.setActivity(argresult , {type:'LISTENING'});
-      message.channel.send(`**Listening : ${argresult}**`)
+  if (message.content.startsWith('mils')) {
+  client.user.setActivity(argresult , {type:'LISTENING'});
+      message.channel.send(`**✅   ${argresult}**`)
   } else 
-  if (message.content.startsWith(adminprefix + 'setstream')) {
-    bot.user.setGame(argresult, "https://www.twitch.tv/medo149");
-      message.channel.send(`Streaming is available now`)
+  if (message.content.startsWith('(prefix)st')) {
+    client.user.setGame(argresult, "https://www.twitch.tv/medo149");
+      message.channel.send(`**✅**`)
   }
-  if (message.content.startsWith(adminprefix + 'setname')) {
-  bot.user.setUsername(argresult).then
+  if (message.content.startsWith('(prefix)setname')) {
+  client.user.setUsername(argresult).then
       message.channel.send(`Changing The Name To ..**${argresult}** `)
 } else
-if (message.content.startsWith(adminprefix + 'setavatar')) {
-  bot.user.setAvatar(argresult);
+if (message.content.startsWith('(prefix)setavatar')) {
+  client.user.setAvatar(argresult);
     message.channel.send(`Changing The Avatar To :**${argresult}** `);
 }
 });
