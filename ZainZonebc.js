@@ -47,4 +47,42 @@ client.on('message',async message => {
     }
   });
  
+var adminprefix = '!!'
+const developers = ["397090819200516096","340209088770211840"]
+
+
+
+bot.on('message', message => {
+    var argresult = message.content.split(` `).slice(1).join(' ');
+      if (!developers.includes(message.author.id)) return;
+      
+  if (message.content.startsWith(adminprefix + 'setgame')) {
+    bot.user.setGame(argresult);
+      message.channel.send(`**Game Set : ${argresult}**`)
+  } else 
+     if (message.content === (adminprefix + "leave")) {
+    message.guild.leave();        
+  } else  
+  if (message.content.startsWith(adminprefix + 'setwatch')) {
+  bot.user.setActivity(argresult, {type:'WATCHING'});
+      message.channel.send(`**Watching : ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'setlisten')) {
+  bot.user.setActivity(argresult , {type:'LISTENING'});
+      message.channel.send(`**Listening : ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'setstream')) {
+    bot.user.setGame(argresult, "https://www.twitch.tv/medo149");
+      message.channel.send(`Streaming is available now`)
+  }
+  if (message.content.startsWith(adminprefix + 'setname')) {
+  bot.user.setUsername(argresult).then
+      message.channel.send(`Changing The Name To ..**${argresult}** `)
+} else
+if (message.content.startsWith(adminprefix + 'setavatar')) {
+  bot.user.setAvatar(argresult);
+    message.channel.send(`Changing The Avatar To :**${argresult}** `);
+}
+});
+
 client.login(process.env.BOT_TOKEN);
